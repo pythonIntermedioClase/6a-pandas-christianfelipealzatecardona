@@ -14,6 +14,15 @@ import numpy as np
 import pandas as pd
 from datetime import date
 
+# Correcto
+from src.data_loader import cargar_declaraciones
+from src.data_transformer import clasificar_por_valor
+
+
+RUTA_DATOS = "data/inputs/declaraciones_iva_2025.csv"
+...
+
+
 # Sección 3:
 # from src.data_loader import cargar_declaraciones
 #
@@ -47,6 +56,20 @@ COLUMNAS_SALIDA = [
 ]
 
 
+
+
+def probar_acceso_diccionario():
+    declaracion = {"nit": "800234567-0", "estado": "Pendiente"}
+    print(declaracion["valor_declarado"])
+
+
+def revisar_declaracion(declaracion):
+    for clave, valor in declaracion.items():
+        print(f"{clave}: {valor}")
+    declaracion["estado"] = "Revisada"
+    print(f"\nEstado actualizado: {declaracion['estado']}")
+
+ 
 # =============================================================================
 # MENÚ
 # Esta función ya está implementada. Ejecútala, lee el código y úsala como
@@ -68,11 +91,14 @@ def mostrar_menu():
     return input("  Opción: ").strip()
 
 
+
+
 # =============================================================================
 # PIPELINE
 # __main__ solo llama a main(). La lógica vive en funciones, no a nivel de
 # módulo: así puedes importar main.py desde otros scripts sin efectos.
 # =============================================================================
+
 
 def main():
     """Ejecuta el pipeline interactivo de declaraciones IVA."""
@@ -143,7 +169,39 @@ def main():
 # =============================================================================
 # PUNTO DE ENTRADA
 # =============================================================================
+def probar_acceso_serie():
+    serie = pd.Series([100, 200, 300])
+    print(serie[0])
+
+
+
+def explorar_dataframe():
+    datos = {
+    "nit": ["900123456-1", "800234567-0", "700345678-9"],
+    "razon_social": ["Pipe SAS", "Pepito", "Lisa SAS"],
+    "municipio": ["Medellin", "Bogotá", "Cali"],
+    "valor_declarado": [2_500_000,12_300_000, 2_100_000],
+    }
+    df = pd.DataFrame(datos)
+    print(f'\n')
+    print(f'El tamaño es: {df.shape} \n')
+    print(f'Sus indices: {df.index} \n')
+    print(f'Columnas: {df.columns} \n')
+    print(df)
+    df.to_excel("df_eje_basico.xlsx", index=False)
+    print(f'\n')
+
+nits   = ["900111222-0", "800333444-5", "700555666-1", "600777888-2", "500999000-3"]
+valores = [4_500_000, 12_300_000, 2_100_000, 8_750_000, 15_200_000]
+def analizar_serie(nits, valores):
+    serie=pd.Series(data=valores, index=nits)
+    print(serie.min())
+    print(serie.max())
+    print(serie.mean())
 
 if __name__ == "__main__":
-    main()
-
+    #probar_acceso_serie()
+    #explorar_dataframe()
+    analizar_serie(nits, valores)
+    # main()  ← comentado mientras probamos
+    
