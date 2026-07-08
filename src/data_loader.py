@@ -23,12 +23,14 @@ def cargar_declaraciones(ruta, columnas=None):
         cargar_declaraciones("datos/declaraciones_iva_2025.csv")
         cargar_declaraciones("datos/declaraciones_iva_2025.csv", columnas=["nit", "valor_declarado"])
     """
-    # TODO: Usa pd.read_csv() para cargar el archivo desde `ruta`.
+    # : Usa pd.read_csv() para cargar el archivo desde `ruta`.
+    df = pd.read_csv(ruta)
     # Fuerza las columnas "nit" y "codigo_municipio" a tipo str con el parámetro dtype.
     # Si se recibe una lista en `columnas`, úsala en el parámetro usecols.
     # Si `columnas` es None, carga todas las columnas.
     # Retorna el DataFrame cargado.
-    pass
+    print(df)
+    return df
 
 
 def inspeccionar_datos(df):
@@ -84,6 +86,7 @@ def validar_nulos(df, columnas_criticas):
 # Actualiza las llamadas a medida que implementas cada función.
 # =============================================================================
 if __name__ == "__main__":
-    df = cargar_declaraciones("data/inputs/declaraciones_iva_2025.csv")
+    df = cargar_declaraciones("data/input/declaraciones_iva_2025.csv")
     inspeccionar_datos(df)
+    
     validar_nulos(df, ["nit", "valor_declarado", "estado"])
