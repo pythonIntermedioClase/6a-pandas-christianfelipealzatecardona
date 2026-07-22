@@ -199,9 +199,19 @@ def analizar_serie(nits, valores):
     print(serie.max())
     print(serie.mean())
 
+lista_declaraciones = [
+    {"nit": "900111222-0", "razon_social": "Empresa A", "valor_declarado": 4_500_000},
+    {"nit": "800333444-5", "razon_social": "Empresa B", "valor_declarado": 12_300_000},
+    {"nit": "700555666-1", "razon_social": "Empresa C", "valor_declarado": 2_100_000},
+    ]
+def construir_dataframe(lista_declaraciones):
+    df = pd.DataFrame(lista_declaraciones)
+    print(df)
+    return df
 if __name__ == "__main__":
     #probar_acceso_serie()
     #explorar_dataframe()
     analizar_serie(nits, valores)
+    
     # main()  ← comentado mientras probamos
     
