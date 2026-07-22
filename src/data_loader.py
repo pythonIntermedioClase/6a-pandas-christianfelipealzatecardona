@@ -71,10 +71,13 @@ def validar_nulos(df, columnas_criticas):
     Ejemplos:
         validar_nulos(df, ["nit", "valor_declarado", "estado"])
     """
-    # TODO: Recorre columnas_criticas con un ciclo for.
+    
     # Para cada columna, calcula si hay algún valor faltante y si lo hay imprime el nombre de la columna 
     # y la cantidad de nulos encontrados.
-    pass
+    for columna in columnas_criticas:
+        nulos = df[columna].isnull().sum()
+        if nulos > 0:
+            print(f"Columna '{columna}' tiene {nulos} valores nulos.")
 
 
 # =============================================================================

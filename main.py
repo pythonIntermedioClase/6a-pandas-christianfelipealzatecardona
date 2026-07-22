@@ -15,7 +15,7 @@ import pandas as pd
 from datetime import date
 
 # Correcto
-from src.data_loader import cargar_declaraciones, inspeccionar_datos
+from src.data_loader import cargar_declaraciones, inspeccionar_datos,validar_nulos
 from src.data_transformer import clasificar_por_valor
 
 
@@ -219,7 +219,8 @@ if __name__ == "__main__":
     #explorar_dataframe()
     #analizar_serie(nits, valores)
     df = cargar_declaraciones("data/inputs/declaraciones_iva_2025.csv")
-    inspeccionar_datos(df)
-    probar_atributo_shape()
+    #inspeccionar_datos(df)
+    #probar_atributo_shape()
+    validar_nulos(df, ["nit", "valor_declarado", "estado"])
     # main()  ← comentado mientras probamos
     
