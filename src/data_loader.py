@@ -23,10 +23,12 @@ def cargar_declaraciones(ruta, columnas=None):
         cargar_declaraciones("datos/declaraciones_iva_2025.csv")
         cargar_declaraciones("datos/declaraciones_iva_2025.csv", columnas=["nit", "valor_declarado"])
     """
+
     # : Usa pd.read_csv() para cargar el archivo desde `ruta`.
     df = pd.read_csv(ruta)
     # Fuerza las columnas "nit" y "codigo_municipio" a tipo str con el parámetro dtype.
     # Si se recibe una lista en `columnas`, úsala en el parámetro usecols.
+
     # Si `columnas` es None, carga todas las columnas.
     # Retorna el DataFrame cargado.
     print(df)
@@ -46,11 +48,6 @@ def inspeccionar_datos(df):
     Returns:
         None
     """
-    # TODO: Imprime los siguientes elementos con etiquetas claras:
-    # 1. df.shape
-    # 2. df.dtypes
-    # 3. df.isnull().sum()
-    # 4. df.duplicated().sum()
     pass
 
 
@@ -72,8 +69,7 @@ def validar_nulos(df, columnas_criticas):
         validar_nulos(df, ["nit", "valor_declarado", "estado"])
     """
     # TODO: Recorre columnas_criticas con un ciclo for.
-    # Para cada columna, calcula df[columna].isnull().sum().
-    # Si el resultado es mayor que 0, imprime el nombre de la columna
+    # Para cada columna, calcula si hay algún valor faltante y si lo hay imprime el nombre de la columna 
     # y la cantidad de nulos encontrados.
     pass
 
