@@ -31,7 +31,7 @@ def cargar_declaraciones(ruta, columnas=None):
 
     # Si `columnas` es None, carga todas las columnas.
     # Retorna el DataFrame cargado.
-    print(df)
+    #print(df.info())
     return df
 
 
@@ -48,6 +48,7 @@ def inspeccionar_datos(df):
     Returns:
         None
     """
+    
     print(f"Dimensiones: {df.shape}")
     print(f"Tipos de dato:\n{df.dtypes}")
     print(f"Valores de nulos por columna:\n{df.isnull().sum()}")

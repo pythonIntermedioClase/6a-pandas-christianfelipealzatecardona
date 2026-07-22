@@ -27,7 +27,7 @@ RUTA_DATOS = "data/inputs/declaraciones_iva_2025.csv"
 # from src.data_loader import cargar_declaraciones
 #
 # Sección 4 — agrega las dos funciones nuevas al import de data_loader:
-# from src.data_loader import cargar_declaraciones, inspeccionar_datos, validar_nulos
+from src.data_loader import cargar_declaraciones, inspeccionar_datos, validar_nulos
 #
 # Sección 5:
 # from src.data_transformer import clasificar_por_valor, agregar_identificador_periodo, preparar_columnas_salida
@@ -119,9 +119,10 @@ def main():
         # Completa los espacios marcados con ___ y ejecuta.
         # -----------------------------------------------------------------
         if opcion == "1":
-            # df = cargar_declaraciones(___)
-            # print(f"Filas cargadas: {___}")
-            pass
+            df = cargar_declaraciones("data/inputs/declaraciones_iva_2025.csv")
+            print(f"Filas cargadas: {df.shape}")
+            #print(f"Primeras filas: {df.head()}")
+           
 
         # -----------------------------------------------------------------
         # OPCIÓN 2: INSPECCIÓN
@@ -131,7 +132,9 @@ def main():
         # Funciones disponibles: inspeccionar_datos(), validar_nulos()
         # -----------------------------------------------------------------
         elif opcion == "2":
-            pass
+            df = cargar_declaraciones("data/inputs/declaraciones_iva_2025.csv")
+            inspeccionar_datos(df)
+            validar_nulos(df, COLUMNAS_CRITICAS)
 
         # -----------------------------------------------------------------
         # OPCIÓN 3: TRANSFORMACIÓN
@@ -218,9 +221,9 @@ if __name__ == "__main__":
     #probar_acceso_serie()
     #explorar_dataframe()
     #analizar_serie(nits, valores)
-    df = cargar_declaraciones("data/inputs/declaraciones_iva_2025.csv")
+    #df = cargar_declaraciones("data/inputs/declaraciones_iva_2025.csv")
     #inspeccionar_datos(df)
     #probar_atributo_shape()
-    validar_nulos(df, ["nit", "valor_declarado", "estado"])
-    # main()  ← comentado mientras probamos
+    #validar_nulos(df, ["nit", "valor_declarado", "estado"])
+    main()
     
