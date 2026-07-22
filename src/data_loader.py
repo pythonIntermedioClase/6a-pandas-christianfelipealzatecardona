@@ -48,7 +48,10 @@ def inspeccionar_datos(df):
     Returns:
         None
     """
-    pass
+    print(f"Dimensiones: {df.shape}")
+    print(f"Tipos de dato:\n{df.dtypes}")
+    print(f"Valores de nulos por columna:\n{df.isnull().sum()}")
+    print(f"Total de filas duplicadas: {df.duplicated().sum()}")
 
 
 def validar_nulos(df, columnas_criticas):

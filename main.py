@@ -15,7 +15,7 @@ import pandas as pd
 from datetime import date
 
 # Correcto
-from src.data_loader import cargar_declaraciones
+from src.data_loader import cargar_declaraciones, inspeccionar_datos
 from src.data_transformer import clasificar_por_valor
 
 
@@ -208,10 +208,18 @@ def construir_dataframe(lista_declaraciones):
     df = pd.DataFrame(lista_declaraciones)
     print(df)
     return df
+
+def probar_atributo_shape():
+    df = pd.read_csv("data/inputs/declaraciones_iva_2025.csv")
+    print(df.shape)
+
+
 if __name__ == "__main__":
     #probar_acceso_serie()
     #explorar_dataframe()
-    analizar_serie(nits, valores)
-    
+    #analizar_serie(nits, valores)
+    df = cargar_declaraciones("data/inputs/declaraciones_iva_2025.csv")
+    inspeccionar_datos(df)
+    probar_atributo_shape()
     # main()  ← comentado mientras probamos
     
